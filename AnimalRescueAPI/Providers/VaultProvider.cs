@@ -41,7 +41,18 @@ namespace AnimalRescueAPI.Providers
                 }
                 else
                 {
-                    throw new InvalidOperationException($"Unsupported SecretsType: {_vaultClient.SecretsType}");
+                    using (StreamReader reader = new StreamReader("/AnimalRescueAPI/secrets"))
+                    {
+                        var json = reader.ReadToEnd();
+                        var secrets = json.Replace("\\n", ",").Replace("\r\n", ",").Replace("\n", ",").Split(",", StringSplitOptions.RemoveEmptyEntries);
+
+                        if (secrets != null)
+                        {
+                            Data.Add("database:userID", secrets.Where(x => x.Contains("userID")).FirstOrDefault()?.Split('=')[1]);
+                            Data.Add("database:password", secrets.Where(x => x.Contains("password")).FirstOrDefault()?.Split('=')[1]);
+                            Data.Add("database:server", secrets.Where(x => x.Contains("server")).FirstOrDefault()?.Split('=')[1]);
+                        }
+                    }
                 }
             }
             catch (Exception ex)

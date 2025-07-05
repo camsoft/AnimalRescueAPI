@@ -32,7 +32,8 @@ namespace AnimalRescue.Repositories
                                          LastName = anp.LastName,
                                          FirstName = anp.FirstName,
                                          IntakeDate = anp.IntakeDate,
-                                         Gender = anp.Gender
+                                         Gender = anp.Gender,
+                                         AnimalType = ant.AnimalType
                                      }
                                  )
                                  .AsNoTracking()

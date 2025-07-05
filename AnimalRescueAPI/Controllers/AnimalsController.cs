@@ -20,8 +20,8 @@ namespace AnimalRescueAPI.Controllers
         }
 
         [HttpGet]
-        [Route("GetAnimals")]
-        public async Task<IActionResult> GetAnimals()
+        [Route("getAllAnimals")]
+        public async Task<IActionResult> getAllAnimals()
         {
             var model = await animalService.GetAnimals();
 

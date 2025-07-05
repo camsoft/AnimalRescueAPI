@@ -12,6 +12,7 @@ namespace AnimalRescue.Core.Dtos
         public string FirstName { get; set; }
         public String LastName { get; set; }
         public string Gender { get; set; }
+        public string AnimalType { get; set; }
         public DateTime? IntakeDate { get; set; }
     }
 }
